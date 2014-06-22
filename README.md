@@ -3,7 +3,7 @@ McDrumEco
 Basic Economy Plugin for McDrum 
 Minecraft Server
 
-includes:
+Includes:
 
 -Economy,
 -Sign Shop,
