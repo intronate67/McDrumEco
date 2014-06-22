@@ -11,7 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -62,11 +61,10 @@ public class SignListener implements Listener{
                     return;
 
                 }
-                Inventory inv = p.getInventory();
                 ItemStack items = new ItemStack(mat);
                 items.setAmount(64);
-                inv.addItem(items);
-                p.sendMessage(ChatColor.GREEN + "You have bought 64 " + items.toString() + "s");
+                p.getInventory().addItem(items);
+                p.sendMessage(ChatColor.GREEN + "You have bought 64 " + items.getItemMeta().getDisplayName());
                 EconManager.setBalance(p.getName(), EconManager.getBalance(p.getName()) - price);
                 return;
             } else {
@@ -74,11 +72,10 @@ public class SignListener implements Listener{
                     p.sendMessage(ChatColor.RED + "Insufficient Balance!");
                     return;
                 }
-                Inventory inv = p.getInventory();
                 ItemStack items = new ItemStack(mat);
                 items.setAmount(1);
-                inv.addItem(items);
-                p.sendMessage(ChatColor.GREEN + "You have bought 1 " + items.toString());
+                p.getInventory().addItem(items);
+                p.sendMessage(ChatColor.GREEN + "You have bought 1 " + items.getItemMeta().getDisplayName());
                 EconManager.setBalance(p.getName(), EconManager.getBalance(p.getName()) - price);
             }
 
