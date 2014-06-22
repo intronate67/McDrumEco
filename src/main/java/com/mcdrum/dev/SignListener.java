@@ -47,8 +47,7 @@ public class SignListener implements Listener{
         if(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_AIR){
             return;
         }
-
-        if (signs.containsKey(e.getClickedBlock().getLocation())) {
+        if (signs.containsKey(e.getClickedBlock().getLocation()) && e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block block = e.getClickedBlock();
             Sign sign = (Sign) block.getState();
             String[] lines = sign.getLines();
