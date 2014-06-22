@@ -1,0 +1,8 @@
+name: ${project.artifactId}
+main: com.mcdrum.dev.McDrumEco
+version: $(project.version)
+commands:
+    eco:
+        description: Economy Command.
+    kit:
+        descripiton: Kit Command.
