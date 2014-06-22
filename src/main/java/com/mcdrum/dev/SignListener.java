@@ -47,11 +47,20 @@ public class SignListener implements Listener{
         if(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_AIR){
             return;
         }
+
         if (signs.containsKey(e.getClickedBlock().getLocation()) && e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if(e.getPlayer().getItemInHand() != null){
+                p.sendMessage(ChatColor.RED + "Your hand must be empty!");
+            }
             Block block = e.getClickedBlock();
             Sign sign = (Sign) block.getState();
             String[] lines = sign.getLines();
-            Material mat = Material.getMaterial(lines[1].toUpperCase());
+            if(Material.getMaterial(lines[1]) == null){
+                p.sendMessage("Not a valid matierial");
+                e.getClickedBlock().breakNaturally();
+                return;
+            }
+            Material mat = Material.matchMaterial(lines[1]);
             double price = Double.parseDouble(lines[2].replace("$", " "));
             int amount = Integer.parseInt(lines[3]);
             if (amount == 64) {
