@@ -25,7 +25,6 @@ public class EconCommand implements CommandExecutor
             cs.sendMessage(ChatColor.GREEN+"Usage: /eco <add/remove/set/balance> [player] [amount]");
             return true;
         }
-
         if(args[0].equalsIgnoreCase("add"))
         {
             if(!p.hasPermission("mcdrumeco.add")){
