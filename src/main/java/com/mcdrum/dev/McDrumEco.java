@@ -47,24 +47,6 @@ public class McDrumEco extends JavaPlugin{
         if(!getDataFolder().exists()){
             getDataFolder().mkdir();
         }
-        if (getServer().getPluginManager().getPlugin("Vault") != null)
-        {
-            loadConfig();
-            if (miningrewards) {
-                getServer().getPluginManager().registerEvents(BlockEventHandler, this);
-            }
-            if ((mobrewards) || (playerrewards)) {
-                getServer().getPluginManager().registerEvents(PlayerHandler, this);
-            }
-            for (Player player : getServer().getOnlinePlayers()) {
-                PlayerHandler.PlayerData.put(player.getName(), new PlayerData(player));
-            }
-        }
-        else
-        {
-            System.out.println("Vault not installed! APOC Payday cannot run and is being disabled.");
-            getServer().getPluginManager().disablePlugin(this);
-        }
         getCommand("balance").setExecutor(new BalanceCommand());
         getCommand("bal").setExecutor(new BalanceCommand());
         getCommand("eco").setExecutor(new EconCommand());
